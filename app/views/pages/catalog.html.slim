@@ -1,0 +1,54 @@
+header
+  div id="header-wrap"
+    div id="header-logo"
+      a href="\"
+        span id="logo-icon"
+    div id="mobile-menu-icon"
+  	  span id="icon-menu"
+      span id="icon-close-menu"
+    div id="menu" class="mobile-menu-close" 
+      ul 
+        li
+          a href="\" class="menu-item active"	Главная
+        li
+          a href="\" class="menu-item"	Каталог
+        li
+          a href="\" class="menu-item" 	Фотогалерея
+        li
+          a href="\" class="menu-item" 	О нас
+        li
+          a href="\" class="menu-item" 	Контакты    
+div id="content"
+  div id="search-params"
+    div id="wrap-search-params"
+      =form_tag("", method: "get") do
+        div class="opt-couple rightSpac"
+          p Тип солнцезащитных систем:
+          select id="production_select"
+            -@products.each do |product|
+              option value="#{product.title}" 
+                =product.title
+        div class="opt-couple rightSpac"
+          p Оттенки цвета:
+          =select_tag "color", options_for_select(@colors_options), {class: "betweenForm"}
+        div class="opt-couple"
+          p Cтоимость 1 м<sup>2</sup> :
+          span от
+          =select_tag "fromPrice", options_for_select(@prices_options), {class: "betweenForm"}
+          span до
+          =select_tag "toPrice", options_for_select(@prices_options), {class: "betweenForm"}
+          span руб
+        input type="submit" value="Показать материалы" 
+  div id="catalog-of-materials"
+    -@materials.each do |material|
+      div class="material"
+        div class="wrap-material"
+          =image_tag(material.image.url)
+          tittle
+            =material.title
+          price
+            =material.price + " "
+            |руб/м<sup>2</sup>
+
+div id="footer"
+  a href="http:\\evrokom.biz"  Евроком © 2014 

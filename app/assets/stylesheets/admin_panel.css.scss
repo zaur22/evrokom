@@ -1,0 +1,107 @@
+// Place all the styles related to the admin_panel controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+header{
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	padding-top: 24px;
+	padding-bottom: 24px;
+	background-color: #fafafa;
+	box-shadow: 0 1px  4px rgba(0, 0, 0, 0.2);
+	z-index: 999;
+
+	#header-wrap{
+		margin: 0 auto;
+		height: 100%;
+	}
+
+	#header-logo{
+		width: 195px;
+		display: inline-block;
+		float: left;
+	}
+
+	#logo-icon{
+		height: 24px;
+		width: 195px;
+		display: inline-block;
+		background: asset-url("logo.png", image) no-repeat;
+		cursor: pointer;
+	}
+
+	#mobile-menu-icon{
+		width: 24px;
+		height: 23px;
+		float: right;
+	} 
+	#menu{
+		text-align: center;
+		ul{
+			li{
+
+			}
+			a{				
+				font-family: 'Open Sans', sans-serif;
+				font-size: 18px;
+				text-decoration: none;
+				color: #7a7a7a;
+				&:visited{
+					color: #7a7a7a;
+				}
+
+			}
+
+		}
+		.active{
+			font-weight: bold;
+		}
+	}
+}
+
+#content2{
+		padding-top: 74px;
+		margin: 0px auto;
+		width: 1000px;
+		min-height: 100%;
+		select{
+			width: 152px;
+			margin: 2px;
+		}
+		table{
+
+		}
+		td{
+			max-width: 240px;
+		}
+
+  .left-block {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    padding-right: 20px;
+    border-right: 1px solid #f1f1f1;
+  }
+
+
+  .right-block {
+    display: inline-block;
+    float: right;
+    #list{
+      display: inline-block;
+      padding: 20px;
+      background-color: #fafafa;
+      li{
+        cursor: default;
+        border: 1px solid #2E2F30;
+        background-color: #ffffff;
+        border-radius: 5px;
+        margin: 8px 0px;
+        padding: 2px 10px;
+        min-width: 300px;
+       }
+    }
+  }
+}
+

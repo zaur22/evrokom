@@ -1,0 +1,214 @@
+#header
+    div id="header-wrap"
+      div id="header-logo"
+        a href="\"
+          span id="logo-icon"
+      div id="menu"
+        ul 
+          li.scroll href="#advantages" Преимущества 
+          li.scroll href="#catalog" Каталог
+          li.scroll href="#our-work" Наши работы
+          li.scroll href="#process"  Этапы работы  
+          li class="menu-item opacity_button scroll" href="#contacts" 	Контакты
+#fixed_header_wrapper
+   div class="wrap"
+      div id="logo2"
+      div id="menu"
+        ul
+          li.scroll href="#advantages" Преимущества 
+          li.scroll href="#catalog" Каталог
+          li.scroll href="#our-work" Наши работы
+          li.scroll href="#process" Этапы работы
+          li.main_red_button.scroll href="#contacts" Заказать
+
+div id="content"
+  div id="front"
+    .wrap
+      div id="header-info-wrap"
+        div id="header-info"
+          h1 
+            |Солнцезащитные системы 
+            br
+            |от лучшего производителя
+            br 
+            |Южного Дагестана
+          h2 
+            |Жалюзи, рольшторы, плиссе по низким ценам!
+            br
+            |Замерим, изготовим, установим!
+          p.scroll class="main_red_button" href="#contacts" Вызвать замерщика
+  div id="advantages"
+    div class="title"
+      |Почему Евроком?
+    div class="wrap"
+      ul
+        li
+          div class="icon" data-icon="1"
+          div class="info"
+            div class="value" САМЫЙ
+            div class="text" Большой выбор
+            div class="annotation" 
+              |солнцезащитных систем 
+              br
+              |и материалов в Дербентском 
+              br
+              |районе
+        li
+          div class="icon" data-icon="2"
+          div class="info"
+            div class="value" 10 ЛЕТ
+            div class="text" Работы
+            div class="annotation" 
+              |в сфере солнцезащитных
+              br
+              |систем
+        li
+          div class="icon" data-icon="3"
+          div class="info"
+            div class="value" 20000
+            div class="text"Людей и компаний
+            div class="annotation" 
+              |было обслужено нашей 
+              br
+              |фирмой
+        li
+          div class="icon" data-icon="4"
+          div class="info"
+            div class="value" ОПЫТНАЯ
+            div class="text" Команда рабочих
+            div class="annotation" 
+              |выполнит Ваш заказ 
+              br
+              |качественно и быстро
+  div id="catalog"
+    div class="title"
+      |Что у нас есть?
+    div class="wrap"
+      -if @products.empty?
+       |Систем нет
+      -else
+        div id="items-horizontal" 
+          ul id="slides_wrap" data-length="#{@products.size}"
+            -i = 0
+            -@products.each do |product|
+              -i += 1
+              li.slide-page data-slide="#{i}"
+                .image style="background-image: url(#{product.image.url})"
+                .description-wrap
+                  .description
+                    .text
+                      .name
+                        =product.title
+                      .specification
+                        =product.description
+                      .price
+                        |от #{product.price} руб/м<sup>2</sup>
+        div id="items-vertical"
+          ul.scroll-pane id="items_block"
+            -i = 0
+            -@products.each do |product|
+              -i += 1
+              li.item data-slide-item="#{i}"
+                .little-name
+                  =product.title
+                .little-price
+                  |от #{product.price} руб/м<sup>2</sup>
+          div id="rules"
+            div id="start-stop" class="point" class="play"
+              p
+                =image_tag("start_stop.png")
+            div id="prev" class="point"
+              p
+                =image_tag("pointers.png")
+            div id="next" class="point"
+              p
+                =image_tag("pointers.png")
+    /div id="items-wrap"
+      -if @products.empty?
+       |Систем нет
+      -else
+        -@products.each do |product|
+          div class="item-wrap"
+            div class="item"
+              div.item-container
+                  span class="name"
+                    =product.title
+                  =image_tag(product.image.url)
+                  span class="description" Это самый простой и наиболее распространенный тип рулонных штор. Своеобразная открытость штор заключается в отсутствии кассеты и других декоративных элементов. Полотно рулонной шторы открыто наматывается на вал. Управление может осуществляться цепочкой или пружиной.
+                  span class="price"
+                    |от #{product.price}
+                    |руб/м
+                 a class="button" href=("\\catalog\\" + product.title + "?utf8=✓&color=-&fromPrice=-&toPrice=-")
+                    |Каталог
+  div id="our-work"
+    .title Наши работы
+    div id="previous-image" class="trigger" 
+      =image_tag("left-arrow.png")
+    div id="next-image" class="trigger" 
+      =image_tag("right-arrow.png")
+    ul data-length="#{@our_work.size}"
+      -if @our_work.empty?
+       |Систем нет
+      -else
+        -i = 0
+        -@our_work.each do |work|
+          -i += 1
+          li style="background-image: url(#{work.image.url})" data-image-num="#{i}"
+            .blackout
+            =image_tag(work.image.url, slt: work.alt)
+  div id="process"
+    div class="title"
+      |Как все происходит?
+    div class="wrap"
+      ul
+        li
+          div class="icon" data-icon="1" 1
+          div class="info"
+            div class="text" 
+              |Вы звоните нам 
+              br
+              |или оставляете заказ
+        li
+          div class="icon" data-icon="2" 2
+          div class="info"
+            div class="text" 
+              |В удобное для Вас время 
+              br
+              |приедет замерщик
+              br
+              |с каталогами
+        li
+          div class="icon" data-icon="3" 3
+          div class="info"
+            div class="text" 
+              |Вы выберите систему, 
+              br
+              |и наш работник все замерит
+        li
+          div class="icon" data-icon="4" 4
+          div class="info"
+            div class="text" 
+              |Мы все изготовим и
+              br
+              |в удобное для Вас время
+              br
+              |установим
+  div id="contacts"
+    div class="title"
+      |Наши контакты
+    .wrap
+      span.feedback-form
+        = form_for @client, url: {action: "send_email"}, remote: true do |f|
+          = f.text_field :name, {placeholder: 'Как Вас звать'}
+          = f.text_field :number, {placeholder: 'Номер для связи'}
+          = f.text_field :address,{placeholder: 'Куда приезжать'}
+          = f.submit "Заказать", class: "main_red_button", id: "send_inquiry"
+      span.details
+        span class="telephone" +7 928 123 45 67 
+        span class="e-mail" evrokom@mail.ru 
+        span class="address" Дербент, Агасиева 16Б
+      span.timetable Мы работаем с 9:00 до 18:00, пн - сб  
+    #map
+      <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=udZmk3llTvrQ9aSarqZ3EtDsksapmlkZ&id=map"></script>
+  div id="footerBox"
+    a href="http:\\evrokom.biz"  Евроком © 2014

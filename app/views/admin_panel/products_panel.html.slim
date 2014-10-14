@@ -1,0 +1,90 @@
+header
+  div id="header-wrap"
+    div id="header-logo"
+      a href="\"
+        span id="logo-icon"
+    div id="mobile-menu-icon"
+      span id="icon-menu"
+      span id="icon-close-menu"
+    div id="menu" class="mobile-menu-close"
+      ul 
+        li
+          a href="/" class="menu-item active" Продукция
+div id="content2"
+  div id="products-control-panel"
+    div.title Создание и редактирование систем
+    div.left-block style="height: 300px;"
+      =form_for @product, url: {action: "products_change"} do |f|
+        table
+          td
+            tr
+              td
+                |Выберите cистему:
+              td
+                = select_tag "system", options_for_select(@select_options)
+          td
+            tr
+              td
+                = f.label "Название системы:"
+              td
+                = f.text_field :title
+          td
+            tr
+              td
+                = f.label "Цена от"
+              td
+                = f.text_field :price
+          td
+            tr
+              td
+                = f.label "Описание"
+              td
+                = f.text_area :description
+          td
+            tr
+              td
+                = f.file_field :image
+          td
+            tr
+              td
+
+              td
+                = f.submit "Сохранить"
+                = f.submit "Удалить"
+    div.right-block  style="height: 300px;"
+      =form_tag("/admin/products/sort", method: "post") do
+        p Порядок отображения систем
+        ul id="list"
+          -@all_products.each do |prdct|
+            li
+              = prdct.title
+              = hidden_field prdct.id, "#{prdct.position_number}"
+          =submit_tag("Сохранить")
+
+
+    div.title Фото в наших работах
+    div.left-block
+      =form_for @our_work, url: {action: "image_change"} do |f|
+        table
+          td
+            tr
+              td
+                |Выберите cистему:
+              td
+                = select_tag "system", options_for_select(@select_options_work)
+          td
+            tr
+              td
+                = f.label "Описани"
+              td
+                = f.text_field :alt
+          td
+            tr
+              td
+                = f.file_field :image
+          td
+            tr
+              td
+              td
+                = f.submit "Сохранить"
+                = f.submit "Удалить"

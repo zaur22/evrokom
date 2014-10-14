@@ -1,0 +1,89 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require jscrollpane
+ *= require_self
+ *= require_tree
+ */
+
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+html{
+	min-height: 100%;
+    min-width: 860px;
+	height: 1px
+}
+
+body{
+	margin: 0px;
+	font-family: 'Roboto', sans-serif;
+	min-height: 100%;
+    min-width: 860px;
+	height: 1px;
+	line-height: 1.1;
+}
+
+ul{
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+
+.button{
+	font-size: 14px;
+	font-weight: bold;
+	color: #000;
+	text-decoration: none;
+}
+
+.button:hover{
+	
+}
+
+.jspVerticalBar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background-color: #343434;
+}
+
+.jspVerticalBar *{
+    margin: 0;
+    padding: 0;
+    /* fix IE 7,8 to work with jQuery fadeIn/Out */
+    opacity:inherit;
+    filter:inherit;
+}
+
+.jspTrack{
+   width: 8px;
+   background-color: #343434;
+}
+
+.jspDrag{
+    background: #666;
+    position: relative;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -ms-border-radius:5px;
+    -o-border-radius:5px;
+    border-radius:5px;
+}
+.jspDrag:hover {
+   background-color: #636363;
+}
