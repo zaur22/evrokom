@@ -5,7 +5,9 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'slim', '~> 2.0.3'
 gem 'jscrollpane-rails'
 gem "jquery-scrollto-rails"
-
+group :production do
+  gem 'unicorn', '~> 4.8.3'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
