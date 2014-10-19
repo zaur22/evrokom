@@ -1,6 +1,7 @@
 class AdminPanelController < ApplicationController
-
-	def products_panel
+  http_basic_authenticate_with name: "creator", password: "wsxdcft"
+	
+  def products_panel
 		@product = Product.new
     @all_products = Product.all.sort_by{|e| e.position_number}
 		@select_options = @all_products.map{ |product| [product.title, product.id]}
