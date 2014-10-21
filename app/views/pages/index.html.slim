@@ -114,9 +114,10 @@ div id="content"
                 .little-price
                   |от #{product.price} руб/м<sup>2</sup>
           div id="rules"
-            div id="start-stop" class="point" class="play"
+            div id="start-stop" class="point"
               p
-                =image_tag("play.png")
+                =image_tag("pause.png", id: "pause")
+                =image_tag("play.png", id: "play")
             div id="prev" class="point"
               p
                 =image_tag("left_rule.png")

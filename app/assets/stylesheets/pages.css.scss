@@ -328,6 +328,9 @@ $max_width: 1360px;
 						overflow: hidden;
 					}
 				}
+				#play{
+					display: none;
+				}
 				#prev{
 					margin-right: 3.6764705%;
 					text-align: center;
@@ -368,32 +371,6 @@ $max_width: 1360px;
 		}
 	}
 
-	#catalog-of-materials{
-		.material{
-			display: inline-block;
-			.wrap-material{
-				tittle{
-					font-family: "Open Sans", sans-serif;
-					font-size: 14px;
-					color: #535353;
-					font-weight: bold;
-					float: left;
-					line-height: 1;
-				}
-				price{
-					font-family: "Open Sans", sans-serif;
-					font-size: 14px;
-					color: #ff2828;
-					font-weight: bold;
-					float: right;
-					line-height: 0.5;
-				}
-				img{
-					width: 100%;
-				}
-			}
-		}
-	}
 
 	#our-work{
 		position: relative;

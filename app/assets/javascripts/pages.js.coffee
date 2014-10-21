@@ -112,9 +112,13 @@ window.onload = ->
   $("[data-image-num=" + image_sl_params.page + "]").css("z-index", "2")
   next_image(image_sl_params)
   $("#previous-image").click(->
+    if params.movement
+      start_stop(params)
     prev_image(image_sl_params)
   )
   $("#next-image").click(->
+    if params.movement
+      start_stop(params)
     next_image(image_sl_params)
   )
   
@@ -155,8 +159,6 @@ resize_slider = ->
 
 next_slide = (params)->
   restart_timer(params)
-  if params.movement
-    start_stop(params)
   if params.page is params.number
     changeItem(params.page, 1, params.scroll_api)
     params.page = 1
@@ -173,8 +175,6 @@ next_slide = (params)->
 
 prev_slide = (params)->
   restart_timer(params)
-  if params.movement
-    start_stop(params)
   if params.page is 1
     changeItem(params.page, params.number, params.scroll_api)
     params.page = params.number
@@ -214,7 +214,8 @@ start_stop = (params)->
   if params.movement
     params.movement = false
     clearInterval(params.intervalID)
-    $("#start-stop p img").attr("src", "/assets/pause.png")
+    $("#play").css("display", "block")
+    $("#pause").css("display", "none")
   else
     params.movement = true
     params.intervalID = setInterval(
@@ -223,7 +224,8 @@ start_stop = (params)->
         return
       , params.pause_time  
     )
-    $("#start-stop p img").attr("src", "/assets/play.png")
+    $("#play").css("display", "none")
+    $("#pause").css("display", "block")
 
   return
 
