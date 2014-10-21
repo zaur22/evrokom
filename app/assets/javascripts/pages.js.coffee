@@ -68,8 +68,8 @@ window.onload = ->
 
   ### Start ###
   resize_slider()
-  $("#items_block li").first().addClass("active")
 
+  $("#items_block li").first().addClass("active")
   ### Rules ###
   $("#next").click(->
     next_slide(params)
@@ -81,6 +81,10 @@ window.onload = ->
     numb_of_slide = $(this).data("slide-item")
     go_to_slide(params, numb_of_slide)
   )
+  $("#start-stop").click(->
+    start_stop(params)
+    return
+  )
 
   ### Timer ###
   if params.movement
@@ -91,10 +95,7 @@ window.onload = ->
       , slider_pause_time  
     )
 
-  $("#start-stop").click(->
-    start_stop(params)
-    return
-  )
+ 
 
   ###-------- OUR WORK ---------###
   num = $("#our-work ul").data("length")
@@ -105,6 +106,7 @@ window.onload = ->
     number: num
     movement: true
     intervalID: null
+    works_now: false
 
   $("[data-image-num=" + image_sl_params.page + "]").css("display", "block")  
   $("[data-image-num=" + image_sl_params.page + "]").css("z-index", "2")
@@ -153,6 +155,8 @@ resize_slider = ->
 
 next_slide = (params)->
   restart_timer(params)
+  if params.movement
+    start_stop(params)
   if params.page is params.number
     changeItem(params.page, 1, params.scroll_api)
     params.page = 1
@@ -169,6 +173,8 @@ next_slide = (params)->
 
 prev_slide = (params)->
   restart_timer(params)
+  if params.movement
+    start_stop(params)
   if params.page is 1
     changeItem(params.page, params.number, params.scroll_api)
     params.page = params.number
@@ -208,8 +214,7 @@ start_stop = (params)->
   if params.movement
     params.movement = false
     clearInterval(params.intervalID)
-    $("#start-stop").removeClass("play")
-    $("#start-stop").addClass("pause")
+    $("#start-stop p img").attr("src", "/assets/pause.png")
   else
     params.movement = true
     params.intervalID = setInterval(
@@ -218,11 +223,12 @@ start_stop = (params)->
         return
       , params.pause_time  
     )
-    $("#start-stop").removeClass("pause")
-    $("#start-stop").addClass("play")
+    $("#start-stop p img").attr("src", "/assets/play.png")
 
-    return
+  return
 
+
+### "OUR WORK" SLIDER FINCTIONS ###
 restart_timer = (params)->
   if params.movement
     clearInterval(params.intervalID)
@@ -235,35 +241,41 @@ restart_timer = (params)->
   return
 
 next_image = (params)->
-  restart_image_sl_timer(params)
-  old_page = params.page
-  $("[data-image-num=" + params.page + "]").css("z-index", "1")
-  if params.page is 1
-    params.page = params.number
-  else
-    params.page = params.page - 1
-  $("[data-image-num=" + params.page + "]").css("z-index", "2")
-  $("[data-image-num=" + params.page + "]").fadeIn(params.time)
-  setTimeout(->
-      $("[data-image-num=" + old_page + "]").css("display", "none")
-    , params.time
-  )
+  if not params.works_now
+    params.works_now = true
+    restart_image_sl_timer(params)
+    old_page = params.page
+    $("[data-image-num=" + params.page + "]").css("z-index", "1")
+    if params.page is 1
+      params.page = params.number
+    else
+      params.page = params.page - 1
+    $("[data-image-num=" + params.page + "]").css("z-index", "2")
+    $("[data-image-num=" + params.page + "]").fadeIn(params.time)
+    setTimeout(->
+        $("[data-image-num=" + old_page + "]").css("display", "none")
+        params.works_now = false
+      , params.time
+    )
   return
 
 prev_image = (params)->
-  restart_image_sl_timer(params)
-  old_page = params.page
-  $("[data-image-num=" + params.page + "]").css("z-index", "1")
-  if params.page is params.number
-    params.page = 1
-  else
-    params.page = params.page + 1
-  $("[data-image-num=" + params.page + "]").css("z-index", "2")
-  $("[data-image-num=" + params.page + "]").fadeIn(params.time)
-  setTimeout(->
-      $("[data-image-num=" + old_page + "]").css("display", "none")
-    ,params.time
-  )
+  if not params.works_now
+    params.works_now = true
+    restart_image_sl_timer(params)
+    old_page = params.page
+    $("[data-image-num=" + params.page + "]").css("z-index", "1")
+    if params.page is params.number
+      params.page = 1
+    else
+      params.page = params.page + 1
+    $("[data-image-num=" + params.page + "]").css("z-index", "2")
+    $("[data-image-num=" + params.page + "]").fadeIn(params.time)
+    setTimeout(->
+        $("[data-image-num=" + old_page + "]").css("display", "none")
+        params.works_now = false
+      ,params.time
+    )
   return
 
 restart_image_sl_timer = (params)->

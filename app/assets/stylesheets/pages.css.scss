@@ -328,24 +328,6 @@ $max_width: 1360px;
 						overflow: hidden;
 					}
 				}
-				.pause{
-					img{
-						left: 40%;
-					}
-					p{
-						width: 65%;
-						margin-right: 25%;
-					}
-				}
-				.play{
-					img{
-						right: 70%;
-					}
-					p{
-						width: 55%;
-						margin-left: 30%;
-					}
-				}
 				#prev{
 					margin-right: 3.6764705%;
 					text-align: center;
@@ -373,6 +355,9 @@ $max_width: 1360px;
 						background-color: #3f3f3f;
 					}
 				}	
+				p{
+					max-height: 100%;
+				}
 				img{
 					position: relative;
 					max-height: 100%;
@@ -475,6 +460,7 @@ $max_width: 1360px;
 			color: #f1f1f1;
 		}
 		.details{
+			color: #ffffff;
 			position: absolute;
 			top: 3px;
 			display: inline-block;
@@ -492,7 +478,7 @@ $max_width: 1360px;
 					position: relative;
 					content: image-url("telephone-icon.png");
 					margin-right: 8px;
-					bottom: -2px;
+					bottom: -5px;
 				}
 			}
 			.e-mail{
@@ -501,7 +487,7 @@ $max_width: 1360px;
 					position: relative;
 					content: image-url("email-icon.png");
 					margin-right: 8px;
-					bottom: -1px;
+					bottom: -7px;
 				}
 			}
 			.address{
@@ -510,7 +496,7 @@ $max_width: 1360px;
 					position: relative;
 					content: image-url("address-icon.png");
 					margin-right: 8px;
-					bottom: -1px;
+					bottom: -6px;
 				}
 			}
 		}
@@ -843,22 +829,9 @@ $max_width: 1360px;
 				width: 100%;
 
 				#prev{
-					margin-right: 3.6764705%;
-					p{
-						margin-right: 25%;
-					}
-					img{
-						left: 50%;
-					}
 				}
 
 				#next{
-					p{
-						margin-left: 25%;
-					}
-					img{
-						right: 50%;
-					}
 				}
 
 				.point{
@@ -866,7 +839,7 @@ $max_width: 1360px;
 				}
 
 				img{
-					max-height: 100%;
+					max-height: 33px;
 				}
 			}
 
@@ -1105,31 +1078,15 @@ $max_width: 1360px;
 				padding-top: 10px;
 				width: 100%;
 				#start_stop{
-					margin-right: 3.6764705%;
-					p{
-						
-					}
 					img{
-					max-height: 90%;
-				}
+						max-height: 90%;
+					}
 				}
 				#prev{
 					margin-right: 3.6764705%;
-					p{
-						margin-right: 25%;
-					}
-					img{
-						left: 50%;
-					}
 				}
 
 				#next{
-					p{
-						margin-left: 25%;
-					}
-					img{
-						right: 50%;
-					}
 				}
 
 				.point{
@@ -1137,7 +1094,7 @@ $max_width: 1360px;
 				}
 
 				img{
-					max-height: 100%;
+					max-height: 40px;
 				}
 			}
 
