@@ -15,7 +15,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => "109.172.59.191:80" }
+  config.action_mailer.default_url_options = { :host => "104.131.116.76:80" }
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.gmail.com',
     :domain         => 'gmail.com',

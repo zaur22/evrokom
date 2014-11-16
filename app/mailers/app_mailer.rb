@@ -3,7 +3,7 @@ class AppMailer < ActionMailer::Base
   
   def welcome_email(user)
    @user = user
-   mail(to: "zaur9422@mail.ru", 
+   mail(to: "idris77@mail.ru", 
    		subject: "Заказ #{@user.id}")
   end
 

@@ -2,7 +2,7 @@ Evrokom::Application.routes.draw do
   root 'pages#index'
 
   post 'send_email' => 'pages#send_email'
-  get 'admin/products' => 'admin_panel#products_panel'
+  get 'admin' => 'admin_panel#products_panel'
   post 'admin/products/change' => 'admin_panel#products_change'
   post 'admin/works/change' => 'admin_panel#image_change'
   post 'admin/products/sort' => 'admin_panel#products_sort'

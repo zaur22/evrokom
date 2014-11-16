@@ -205,11 +205,14 @@ div id="content"
           = f.text_field :address,{placeholder: 'Куда приезжать'}
           = f.submit "Заказать", class: "main_red_button", id: "send_inquiry"
       span.details
-        span class="telephone" +7 928 123 45 67 
-        span class="e-mail" evrokom@mail.ru 
-        span class="address" Дербент, Агасиева 16Б
+        span class="telephone" +7 928 583 14 44
+        span class="telephone" +7 872 404 95 99
+        //span class="e-mail" evrokom@mail.ru 
+        span class="address" г. Дербент, Агасиева 16Б
       span.timetable Мы работаем с 9:00 до 18:00, пн - сб  
     #map
       <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=udZmk3llTvrQ9aSarqZ3EtDsksapmlkZ&id=map"></script>
   div id="footerBox"
-    a href="http:\\evrokom.biz"  Евроком © 2014
+    a href="http:\\evrokom.biz"  
+      |Евроком © 
+      =Time.now.year
