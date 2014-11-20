@@ -94,22 +94,22 @@ div id="content"
                 .image style="background-image: url(#{product.image.url})"
                 .description-wrap
                   .description
-                    .text
-                      h1.name
+                    div (class="text" itemscope  itemtype="http://schema.org/Product")
+                      h1.name itemprop="name"
                         =product.title
-                      .specification
+                      .specification itemprop="description"
                         =product.description
-                      .price
+                      .price itemprop="price"
                         |от #{product.price} руб/м<sup>2</sup>
         div id="items-vertical"
           ul.scroll-pane id="items_block"
             -i = 0
             -@products.each do |product|
               -i += 1
-              li.item data-slide-item="#{i}"
-                .little-name
+              li(class="item" data-slide-item="#{i}" itemscope  itemtype="http://schema.org/Product")
+                .little-name itemprop="name"
                   =product.title
-                .little-price
+                .little-price itemprop="price"
                   |от #{product.price} руб/м<sup>2</sup>
           div id="rules"
             div id="start-stop" class="point"
@@ -202,12 +202,18 @@ div id="content"
           = f.text_field :number, {placeholder: 'Номер для связи'}
           = f.text_field :address,{placeholder: 'Куда приезжать'}
           = f.submit "Заказать", class: "main_red_button", id: "send_inquiry"
-      span.details
-        span class="telephone" +7 928 583 14 44
-        span class="telephone" +7 872 404 99 95
+      span(class="details" itemscope itemtype="http://schema.org/LocalBusiness")
+        meta itemprop="name" content="Евроком"
+        meta itemprop="description" content="Жалюзи и рольшторы. Замерим, изготовим, установим."
+        meta itemprop="logo" content="http://0.0.0.0:3000/assets/logo.png"
+        span class="telephone" itemprop="telephone" +7 928 583 14 44
+        span class="telephone" itemprop="telephone" +7 872 404 99 95
         //span class="e-mail" evrokom@mail.ru 
-        span class="address" г. Дербент, Агасиева 16Б
-      span.timetable Мы работаем с 9:00 до 18:00, пн - сб  
+        span(class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress")
+          span itemprop="addressLocality" г. Дербент
+          |, 
+          span itemprop="streetAddress" Агасиева 16Б
+      span.timetable itemprop="openingHours" datetime="Mo-Sa 9:00-18:00" Мы работаем с 9:00 до 18:00, пн - сб  
     #map
       <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=udZmk3llTvrQ9aSarqZ3EtDsksapmlkZ&id=map(5 минут)"></script>
   div id="footerBox"
