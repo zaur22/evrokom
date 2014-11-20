@@ -11,7 +11,7 @@
   <meta name="description" content="Жалюзи и рольшторы с замерами и установкой по всему южному Дагестану. Большое разнообразие систем, цветов и материалов"/>
   <meta name="keywords" content="жалюзи, плиссе, рольшторы, горизонтальные, вертикальные, деревянные, Дербент, Дагестан, Дербентский район, Махачкала, Избербаш"/>
   <%= favicon_link_tag %>
-  <link async href='http://fonts.googleapis.com/css?family=Roboto:300,700,400&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+  
   <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true, :async => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true, :async => true %>
   <%= include_gon %>
@@ -34,6 +34,7 @@
     У вас отключен JavaScript. Сайт может отображаться некорректно. Рекомендуем включить JavaScript.
 </noscript>
 <%= yield %>
+<link async href='http://fonts.googleapis.com/css?family=Roboto:300,700,400&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 </body>
 </html>
