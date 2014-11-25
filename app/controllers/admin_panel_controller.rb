@@ -68,7 +68,7 @@ class AdminPanelController < ApplicationController
         if !our_work_params[:alt].empty?
           our_work.alt = get_work_params[:title]
         end
-        if !our_work_params[:image].empty?
+        if !our_work_params[:image].nil?
           our_work.image = get_work_params[:image]
         end
         our_work.save

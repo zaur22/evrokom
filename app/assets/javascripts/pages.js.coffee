@@ -5,8 +5,8 @@
 
 window.onload = ->
   animate_time = 800
-  slider_pause_time = 8000
-  pageScrollTime = 3000
+  slider_pause_time = 10000
+  pageScrollTime = 2000
   headerHeight = 76
 
   $window = $(window)

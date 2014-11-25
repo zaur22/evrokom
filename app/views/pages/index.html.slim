@@ -31,7 +31,7 @@ div id="content"
             br
             |от лучшего производителя
             br 
-            |Южного Дагестана
+            |Дербентского района
           h2
             |Замерим, изготовим, установим!
           p.scroll class="main_red_button" href="#contacts" Вызвать замерщика
@@ -99,18 +99,25 @@ div id="content"
                         =product.title
                       .specification itemprop="description"
                         =product.description
-                      .price itemprop="price"
-                        |от #{product.price} руб/м<sup>2</sup>
+                      div(class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer")
+                        |от 
+                        span itemprop="price" content="#{product.price}" 
+                          | #{product.price} руб/м
+                          sup 2
+                        meta itemprop="priceCurrency" content="RUB"
         div id="items-vertical"
           ul.scroll-pane id="items_block"
             -i = 0
             -@products.each do |product|
               -i += 1
-              li(class="item" data-slide-item="#{i}" itemscope  itemtype="http://schema.org/Product")
-                .little-name itemprop="name"
+              li.item data-slide-item="#{i}"
+                .little-name
                   =product.title
-                .little-price itemprop="price"
-                  |от #{product.price} руб/м<sup>2</sup>
+                .little-price 
+                  |от 
+                  span 
+                    | #{product.price} руб/м
+                    sup 2
           div id="rules"
             div id="start-stop" class="point"
               p
@@ -122,23 +129,6 @@ div id="content"
             div id="next" class="point"
               p
                 =image_tag("right_rule.png")
-    /div id="items-wrap"
-      -if @products.empty?
-       |Систем нет
-      -else
-        -@products.each do |product|
-          div class="item-wrap"
-            div class="item"
-              div.item-container
-                  span class="name"
-                    =product.title
-                  =image_tag(product.image.url)
-                  span class="description" Это самый простой и наиболее распространенный тип рулонных штор. Своеобразная открытость штор заключается в отсутствии кассеты и других декоративных элементов. Полотно рулонной шторы открыто наматывается на вал. Управление может осуществляться цепочкой или пружиной.
-                  span class="price"
-                    |от #{product.price}
-                    |руб/м
-                 a class="button" href=("\\catalog\\" + product.title + "?utf8=✓&color=-&fromPrice=-&toPrice=-")
-                    |Каталог
   div id="our-work"
     .title Наши работы
     div id="previous-image" class="trigger" 
@@ -154,7 +144,7 @@ div id="content"
           -i += 1
           li style="background-image: url(#{work.image.url})" data-image-num="#{i}"
             .blackout
-            =image_tag(work.image.url, slt: work.alt)
+            =image_tag(work.image.url, alt: work.alt)
   div id="process"
     div class="title"
       |Как все происходит?
@@ -204,18 +194,20 @@ div id="content"
           = f.submit "Заказать", class: "main_red_button", id: "send_inquiry"
       span(class="details" itemscope itemtype="http://schema.org/LocalBusiness")
         meta itemprop="name" content="Евроком"
-        meta itemprop="description" content="Жалюзи и рольшторы. Замерим, изготовим, установим."
-        meta itemprop="logo" content="http://0.0.0.0:3000/assets/logo.png"
-        span class="telephone" itemprop="telephone" +7 928 583 14 44
-        span class="telephone" itemprop="telephone" +7 872 404 99 95
+        meta itemprop="description" content="Жалюзи и рольшторы с замерами и установкой. Работаем по Дербенту и Дербентскому району."
+        meta itemprop="logo" content="/assets/logo.png"
+        meta itemprop="currenciesAccepted" content="RUB"
+        meta itemprop="openingHours" datetime="Mo-Sa 9:00-18:00"
+        span class="telephone" itemprop="telephone" +7 928 583 14 44  
+        span class="telephone" itemprop="telephone" +7 872 404 99 95 
         //span class="e-mail" evrokom@mail.ru 
         span(class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress")
-          span itemprop="addressLocality" г. Дербент
+          span itemprop="addressLocality" Дербент
           |, 
-          span itemprop="streetAddress" Агасиева 16Б
-      span.timetable itemprop="openingHours" datetime="Mo-Sa 9:00-18:00" Мы работаем с 9:00 до 18:00, пн - сб  
+          span itemprop="streetAddress" Агасиева 16Б 
+      span.timetable Мы работаем с 9:00 до 18:00, пн - сб  
     #map
-      <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=udZmk3llTvrQ9aSarqZ3EtDsksapmlkZ&id=map(5 минут)"></script>
+      <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=udZmk3llTvrQ9aSarqZ3EtDsksapmlkZ&id=mapss"></script>
   div id="footerBox"
     a href="http:\\evrokom.biz"  
       |Евроком © 
